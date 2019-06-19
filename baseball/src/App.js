@@ -16,9 +16,9 @@ class App extends Component {
       <div className="App">
         <h1>Let's Play Ball!</h1>
         <div className='display'>
-          <p>Ball: {this.state.ball}</p>
-          <p>Strike: {this.state.strike}</p>
-          <p>Foul: {this.state.foul}</p>
+          <p className='ball'>Ball: {this.state.ball}</p>
+          <p className='strike'>Strike: {this.state.strike}</p>
+          <p className='foul'>Foul: {this.state.foul}</p>
         </div>
 
         <button onClick={this.strike}>Strike</button>
