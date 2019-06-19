@@ -135,6 +135,8 @@ describe('App Components', () => {
       expect(logBall.textContent).toBe("Ball-Count: 1");
       fireEvent.click(hitButton);
       expect(logStrike.textContent).toBe("Strike-Count: 0");
+      expect(logBall.textContent).toBe("Ball-Count: 0");
+
 
     });
 
