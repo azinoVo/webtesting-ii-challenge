@@ -40,21 +40,103 @@ describe('App Components', () => {
       expect(logBall.textContent).toBe("Ball-Count: 0");
     });
 
-    it('Strike-Counter after Button Click', () => {
-      const { getByText, queryByText } = render(<App />);
-      const strikeButton = getByText(/strike/i);
-
-      // click it if it's a button
-      fireEvent.click(button);
+    it('Find Strike Button, then Strike-Counter after Button Clicks', () => {
+      const { getByText } = render(<App />);
+      const strikeButton = getByText(/increment strike/i);
 
       expect(strikeButton).toBeDefined();
       expect(strikeButton).toBeTruthy();
-      expect(strikeButton.textContent).toBe("Strike");
+      expect(strikeButton.textContent).toBe("Increment Strike");
+
+
+      const logStrike = getByText(/strike-count/i); //syntax for case insensitive
+      expect(logStrike).toBeDefined();
+      expect(logStrike).toBeTruthy();
+      fireEvent.click(strikeButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 1");
+
+      fireEvent.click(strikeButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 2");
+
+      fireEvent.click(strikeButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 0");
+
     });
 
-    
+    it('Find Ball Button, then Ball-Counter after Button Clicks', () => {
+      const { getByText } = render(<App />);
+      const BallButton = getByText(/increment ball/i);
+
+      expect(BallButton).toBeDefined();
+      expect(BallButton).toBeTruthy();
+      expect(BallButton.textContent).toBe("Increment Ball");
 
 
+      const logBall = getByText(/ball-count/i);
+      expect(logBall).toBeDefined();
+      expect(logBall).toBeTruthy();
+      fireEvent.click(BallButton);
+      expect(logBall.textContent).toBe("Ball-Count: 1");
+
+      fireEvent.click(BallButton);
+      expect(logBall.textContent).toBe("Ball-Count: 2");
+
+      fireEvent.click(BallButton);
+      expect(logBall.textContent).toBe("Ball-Count: 3");
+
+      fireEvent.click(BallButton);
+      expect(logBall.textContent).toBe("Ball-Count: 0");
+    });
+
+    it('Find Foul Button, then Strike-Counter after Button Clicks', () => {
+      const { getByText } = render(<App />);
+      const foulButton = getByText(/foul/i);
+
+      expect(foulButton).toBeDefined();
+      expect(foulButton).toBeTruthy();
+      expect(foulButton.textContent).toBe("Foul");
+
+
+      const logStrike = getByText(/strike-count/i); //syntax for case insensitive
+      expect(logStrike).toBeDefined();
+      expect(logStrike).toBeTruthy();
+      fireEvent.click(foulButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 1");
+
+      fireEvent.click(foulButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 2");
+
+      fireEvent.click(foulButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 2");
+
+    });
+
+    it('Find Hit Button, then Strike-Counter and Ball-Counter after Button Clicks', () => {
+      const { getByText } = render(<App />);
+      const hitButton = getByText(/hit/i);
+      const BallButton = getByText(/increment ball/i);
+      const strikeButton = getByText(/increment strike/i);
+
+      expect(hitButton).toBeDefined();
+      expect(hitButton).toBeTruthy();
+      expect(hitButton.textContent).toBe("Hit");
+
+      const logStrike = getByText(/strike-count/i);
+      expect(logStrike).toBeDefined();
+      expect(logStrike).toBeTruthy();
+
+      const logBall = getByText(/ball-count/i);
+      expect(logBall).toBeDefined();
+      expect(logBall).toBeTruthy();
+
+      fireEvent.click(strikeButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 1");
+      fireEvent.click(BallButton);
+      expect(logBall.textContent).toBe("Ball-Count: 1");
+      fireEvent.click(hitButton);
+      expect(logStrike.textContent).toBe("Strike-Count: 0");
+
+    });
 
   });
 })

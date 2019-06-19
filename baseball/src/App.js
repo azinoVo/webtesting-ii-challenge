@@ -18,11 +18,10 @@ class App extends Component {
         <div className='display'>
           <p className='ball-block'>Ball-Count: {this.state.ball}</p>
           <p className='strike-block'>Strike-Count: {this.state.strike}</p>
-          <p className='foul-block'>Foul-Count: {this.state.foul}</p>
         </div>
 
-        <button onClick={this.strike}>Strike</button>
-        <button onClick={this.ball}>Ball</button>
+        <button onClick={this.strike}>Increment Strike</button>
+        <button onClick={this.ball}>Increment Ball</button>
         <button onClick={this.foul}>Foul</button>
         <button onClick={this.hit}>Hit</button>
       </div>
