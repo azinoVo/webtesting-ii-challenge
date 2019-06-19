@@ -136,8 +136,7 @@ describe('App Components', () => {
       fireEvent.click(hitButton);
       expect(logStrike.textContent).toBe("Strike-Count: 0");
       expect(logBall.textContent).toBe("Ball-Count: 0");
-
-
+      
     });
 
   });

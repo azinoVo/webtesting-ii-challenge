@@ -6,8 +6,7 @@ class App extends Component {
     super();
     this.state = {
       ball: 0,
-      strike: 0,
-      foul: 0
+      strike: 0
     }
   }
 
