@@ -15,18 +15,46 @@ describe('App Components', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  describe('Baseball Buttons', () => {
+  describe('Baseball Dashboard for Strike Initial Values', () => {
 
-    it('Record the Strike Button Counter', () => {
+    it('Strike Counter', () => {
       const { getByText, queryByText } = render(<App />);
-      // find the button
-      const button = getByText(/strike/i); //syntax for case insensitive
+      // find the button or thing you want
+      const logStrike = getByText(/strike-count/i); //syntax for case insensitive
 
-      // click it
-      fireEvent.click(button);
+      // click it if it's a button
+      // fireEvent.click(button);
 
       // Check Values
-      expect(queryByText(/hello developers/i)).toBeTruthy();
+      expect(logStrike).toBeDefined();
+      expect(logStrike).toBeTruthy();
+      expect(logStrike.textContent).toBe("Strike-Count: 0");
     });
+
+    it('Ball Counter', () => {
+      const { getByText, queryByText } = render(<App />);
+      const logBall = getByText(/ball-count/i);
+
+      expect(logBall).toBeDefined();
+      expect(logBall).toBeTruthy();
+      expect(logBall.textContent).toBe("Ball-Count: 0");
+    });
+
+    it('Strike-Counter after Button Click', () => {
+      const { getByText, queryByText } = render(<App />);
+      const strikeButton = getByText(/strike/i);
+
+      // click it if it's a button
+      fireEvent.click(button);
+
+      expect(strikeButton).toBeDefined();
+      expect(strikeButton).toBeTruthy();
+      expect(strikeButton.textContent).toBe("Strike");
+    });
+
+    
+
+
+
   });
 })
